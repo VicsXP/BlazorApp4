@@ -1,8 +1,12 @@
-using BlazorApp4.Components;
+using Veterinaria.Components;
+using Veterinaria.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<PerroService>();
+builder.Services.AddSingleton<GatoService>();
+builder.Services.AddSingleton<AveService>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 

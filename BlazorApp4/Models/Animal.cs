@@ -1,4 +1,4 @@
-﻿namespace BlazorApp4.Models
+﻿namespace Veterinaria.Models
 {
     public class Animal
     {
