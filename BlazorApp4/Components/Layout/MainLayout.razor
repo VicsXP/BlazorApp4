@@ -1,9 +1,84 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<div>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            Veterinaria
+        </div>
+
+        <nav>
+
+            <a href="/"
+                   class="sidebar-link">
+
+                Inicio
+
+            </a>
+
+            <a href="/perros"
+                   class="sidebar-link">
+
+                Registrar Perro
+
+            </a>
+
+            <a href="/gatos"
+                   class="sidebar-link">
+
+                Registrar Gato
+
+            </a>
+
+            <a href="/aves"
+                   class="sidebar-link">
+
+                Registrar Ave
+
+            </a>
+
+            <a href="/lista-animales"
+                   class="sidebar-link">
+
+                Lista Animales
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <div class="main-content">
+
+        <div class="topbar">
+
+            <h3>
+                Clínica Veterinaria
+            </h3>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            @Body
+
+        </div>
+
+    </div>
+
+</div>
 
 <div id="blazor-error-ui" data-nosnippet>
+
     An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+
+    <a href="." class="reload">
+        Reload
+    </a>
+
+    <span class="dismiss">
+        🗙
+    </span>
+
 </div>

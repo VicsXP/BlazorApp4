@@ -1,0 +1,121 @@
+﻿@page "/aves"
+
+@using Veterinaria.Models
+@using Veterinaria.Services
+
+@inject AveService aveService
+
+<h1 class="mb-4">
+    Registro de Aves
+</h1>
+
+<div class="dashboard-card">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Nombre
+        </label>
+
+        <input class="form-control"
+               @bind="nuevaAve.Nombre" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Especie
+        </label>
+
+        <input class="form-control"
+               @bind="nuevaAve.Especie" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Edad
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevaAve.Edad" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Altura (cm)
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevaAve.Altura" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Tipo de Pico
+        </label>
+
+        <select class="form-control"
+                @bind="nuevaAve.TipoPico">
+
+            <option>Gancho</option>
+            <option>Recto</option>
+            <option>Filtrador</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-4 form-check">
+
+        <input type="checkbox"
+               class="form-check-input"
+               @bind="nuevaAve.Vuela" />
+
+        <label class="form-check-label">
+            ¿Vuela?
+        </label>
+
+    </div>
+
+    <button class="btn btn-primary"
+            @onclick="GuardarAve">
+
+        Guardar Ave
+
+    </button>
+
+</div>
+
+@if (mensaje != "")
+{
+    <div class="alert alert-success mt-4">
+
+        @mensaje
+
+    </div>
+}
+
+@code {
+
+    private Ave nuevaAve = new();
+
+    private string mensaje = "";
+
+    private void GuardarAve()
+    {
+        aveService.GuardarAve(nuevaAve);
+
+        mensaje = "Ave registrada correctamente";
+
+        nuevaAve = new Ave();
+    }
+}

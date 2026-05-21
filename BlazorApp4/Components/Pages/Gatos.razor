@@ -1,0 +1,121 @@
+﻿@page "/gatos"
+
+@using Veterinaria.Models
+@using Veterinaria.Services
+
+@inject GatoService gatoService
+
+<h1 class="mb-4">
+    Registro de Gatos
+</h1>
+
+<div class="dashboard-card">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Nombre
+        </label>
+
+        <input class="form-control"
+               @bind="nuevoGato.Nombre" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Especie
+        </label>
+
+        <input class="form-control"
+               @bind="nuevoGato.Especie" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Edad
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevoGato.Edad" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Altura (cm)
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevoGato.Altura" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Tipo de Pelaje
+        </label>
+
+        <select class="form-control"
+                @bind="nuevoGato.Pelaje">
+
+            <option>Corto</option>
+            <option>Largo</option>
+            <option>Sin pelo</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-4 form-check">
+
+        <input type="checkbox"
+               class="form-check-input"
+               @bind="nuevoGato.EsDomestico" />
+
+        <label class="form-check-label">
+            ¿Es doméstico?
+        </label>
+
+    </div>
+
+    <button class="btn btn-primary"
+            @onclick="GuardarGato">
+
+        Guardar Gato
+
+    </button>
+
+</div>
+
+@if (mensaje != "")
+{
+    <div class="alert alert-success mt-4">
+
+        @mensaje
+
+    </div>
+}
+
+@code {
+
+    private Gato nuevoGato = new();
+
+    private string mensaje = "";
+
+    private void GuardarGato()
+    {
+        gatoService.GuardarGato(nuevoGato);
+
+        mensaje = "Gato registrado correctamente";
+
+        nuevoGato = new Gato();
+    }
+}

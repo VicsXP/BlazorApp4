@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "Raza": "Schnauzer",
+    "Tamano": "Peque\u00F1o",
+    "Nombre": "Fluffy",
+    "Especie": "Schnauzer miniatura",
+    "Edad": 5,
+    "Altura": 35
+  }
+]

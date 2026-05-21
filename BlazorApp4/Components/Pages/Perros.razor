@@ -1,0 +1,120 @@
+﻿@page "/perros"
+
+@using Veterinaria.Models
+@using Veterinaria.Services
+
+@inject PerroService perroService
+
+<h1 class="mb-4">
+    Registro de Perros
+</h1>
+
+<div class="dashboard-card">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Nombre
+        </label>
+
+        <input class="form-control"
+               @bind="nuevoPerro.Nombre" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Especie
+        </label>
+
+        <input class="form-control"
+               @bind="nuevoPerro.Especie" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Edad
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevoPerro.Edad" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Altura (cm)
+        </label>
+
+        <input type="number"
+               class="form-control"
+               @bind="nuevoPerro.Altura" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Raza
+        </label>
+
+        <input class="form-control"
+               @bind="nuevoPerro.Raza" />
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+            Tamaño
+        </label>
+
+        <select class="form-control"
+                @bind="nuevoPerro.Tamano">
+
+            <option>Pequeño</option>
+            <option>Mediano</option>
+            <option>Grande</option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary"
+            @onclick="GuardarPerro">
+
+        Guardar Perro
+
+    </button>
+
+</div>
+
+@if (mensaje != "")
+{
+    <div class="alert alert-success mt-4">
+
+        @mensaje
+
+    </div>
+}
+
+@code {
+
+    private Perro nuevoPerro = new();
+
+    private string mensaje = "";
+
+    private void GuardarPerro()
+    {
+        perroService.GuardarPerro(nuevoPerro);
+
+        mensaje = "Perro registrado correctamente";
+
+        nuevoPerro = new Perro();
+    }
+}
